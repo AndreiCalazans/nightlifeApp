@@ -57,5 +57,12 @@ module.exports = {
 //     }
 // })
   ],
+  externals: {
+  'Config': JSON.stringify({
+    AUTH_DOMAIN: process.env.AUTH_DOMAIN,
+    AUTH_CLIENT_ID: process.env.AUTH_CLIENT_ID,
+    AUTH_CLIENT_SECRET: '123'
+  })
+},
 devtool: 'cheap-module-eval-source-map'
 }
