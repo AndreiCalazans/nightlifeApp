@@ -46,7 +46,7 @@ app.post('/isGoing', function(req, res) {
       //create new info
       Bar({name: barName, isGoing: [{"user": [user], "isGoing": true}] }).save(function(err) {
         if(err) throw err;
-        res.send('new info created!');
+        res.send(bar);
       });
     } else {
       let noUser = true;
