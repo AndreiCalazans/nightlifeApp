@@ -1,10 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions/actions';
+
 import { login, logout, isLoggedIn } from '../utils/AuthService';
 
 
 function LogginControl(props) {
+   
+    
     return (
-         <div className='log'>
+         <div className='align-right'>
         {
           (isLoggedIn()) ?
           ( <button  onClick={() => logout()}>Log out </button> )

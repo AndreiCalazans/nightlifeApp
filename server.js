@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 require('dotenv').config();
 
 var Bar = require('./models/Bars');
-mongoose.connect('mongodb://'+process.env.DB_NAME+':'+process.env.DB_PASS+'@ds163020.mlab.com:63020/nightlife');
+// mongoose.connect('mongodb://'+process.env.DB_NAME+':'+process.env.DB_PASS+'@ds163020.mlab.com:63020/nightlife');
 
 
 // app.use(favicon(path.join(__dirname, 'dist/img', 'favicon.ico')));

@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Card(props) {
+    // const {isGoing , title , imgUrl, address , number} = props;
     return (
         <div className="Card">
             <div className="img">
@@ -11,16 +12,27 @@ function Card(props) {
                 <p>Rating</p>
                 <p>993 Rua dos Papaguaios, Linhares</p>
                 <p>27 99995 5555 </p>
-                <form className="Query">
-                    <label htmlFor="">
-                        Are you going?
-                        <input type="button" value="Yes"/>
-                        <input type="button" value="No"/>                        
-                    </label>
-                </form>
+                <div>
+                    <p>{2} going  
+                        <PlusOrMinus isGoing={false}></PlusOrMinus>
+                    </p>
+                    
+                </div>
             </div>
         </div>
     )
+}
+
+function PlusOrMinus(props) {
+    if(props.isGoing === true) {
+        return (
+            <i className="fa fa-minus" aria-hidden="true"></i>
+        )
+    }else {
+        return (
+            <i className="fa fa-plus" aria-hidden="true"></i>
+        )
+    }
 }
 
 export default Card;

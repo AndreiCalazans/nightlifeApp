@@ -59,11 +59,16 @@ function getIdToken() {
 
 function clearIdToken() {
   localStorage.removeItem(ID_TOKEN_KEY);
+  localStorage.removeItem('profile');
 }
 
 export function isLoggedIn() {
   const idToken = getIdToken();
-  return !!idToken && !isTokenExpired(idToken);
+  let status = !!idToken && !isTokenExpired(idToken);
+  if (status) {
+
+  }
+  return status;
 }
 
 function getTokenExpirationDate(encodedToken) {
@@ -83,6 +88,7 @@ function isTokenExpired(token) {
 
 export function setProfile(profile) {
   // Saves profile data to local storage
+  
   localStorage.setItem('profile', JSON.stringify(profile))
 
 }

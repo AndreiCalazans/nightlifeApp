@@ -1,19 +1,22 @@
 import React from 'react';
-import Nav from './Nav';
-import Card from './Card';
+import {  getProfile , isLoggedIn } from '../utils/AuthService';
+import {connect} from 'react-redux';
+import * as actions from '../actions/actions';
+
 class Main extends React.Component {
-    render () {
+    
+
+    render() {
+        const {dispatch} = this.props;
+        
+        dispatch(actions.isLogged(isLoggedIn()));   
+            
         return (
             <div>
-                <Nav></Nav>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>                
+                {this.props.children}
             </div>
         )
     }
-}
+};
 
-export default Main;
+export default connect()(Main);
