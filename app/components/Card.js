@@ -1,19 +1,19 @@
 import React from 'react';
 
 function Card(props) {
-    // const {isGoing , title , imgUrl, address , number} = props;
+    const {isGoing , title , imgUrl, address , number, rating} = props;
     return (
         <div className="Card">
             <div className="img">
-                <img src="http://www.gavaghan.ca/wp-content/uploads/2014/09/placeholder.png" alt=""/>
+                <img src={imgUrl == ''? "http://rwamittu.com/wp-content/themes/white/assets/images/placeholder.jpg" : imgUrl} alt=""/>
             </div>
             <div className="card-body">
-                <h4>Title</h4>
-                <p>Rating</p>
-                <p>993 Rua dos Papaguaios, Linhares</p>
-                <p>27 99995 5555 </p>
+                <h4>{title}</h4>
+                <p>{rating}</p>
+                <p>{address.join(' ')}</p>
+                <p>{number}</p>
                 <div>
-                    <p>{2} going  
+                    <p>{isGoing.length} going  
                         <PlusOrMinus isGoing={false}></PlusOrMinus>
                     </p>
                     

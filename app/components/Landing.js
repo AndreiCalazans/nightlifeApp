@@ -1,6 +1,7 @@
 import React  from 'react';
 import {  getProfile , isLoggedIn } from '../utils/AuthService';
-
+import {connect} from 'react-redux';
+import * as actions from '../actions/actions';
 import LogginControl from './LogginControl';
 import {browserHistory} from 'react-router';
 class Landing extends React.Component {
@@ -17,6 +18,9 @@ class Landing extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    var {dispatch} = this.props;
+    localStorage.setItem('cityToSearch' , this.state.inputValue);
+    dispatch(actions.cityToSearch(this.state.inputValue));
     browserHistory.push('/bars');
   }
 
@@ -54,4 +58,4 @@ class Landing extends React.Component {
   }
 }
 
-export default Landing;
+export default connect()(Landing);

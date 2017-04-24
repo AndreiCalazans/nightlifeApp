@@ -16,14 +16,14 @@ const lock = new Auth0Lock( AUTH_CLIENT_ID , AUTH_DOMAIN , {
 
 lock.on('authenticated', authResult => {
   setIdToken(authResult.idToken);
-  browserHistory.push('/');
-
-  lock.getProfile(authResult.idToken, (error, profile) => {
+ 
+  lock.getUserInfo(authResult.accessToken, (error, profile) => {
     if(error) {
       console.log('Error loading the Profile', error)
-    } else {
-      setProfile(profile);
     }
+      console.log(profile);
+      setProfile(profile);
+       browserHistory.push('/');
   })
 
 });
@@ -65,9 +65,6 @@ function clearIdToken() {
 export function isLoggedIn() {
   const idToken = getIdToken();
   let status = !!idToken && !isTokenExpired(idToken);
-  if (status) {
-
-  }
   return status;
 }
 

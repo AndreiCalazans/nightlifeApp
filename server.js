@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 require('dotenv').config();
 
 var Bar = require('./models/Bars');
-// mongoose.connect('mongodb://'+process.env.DB_NAME+':'+process.env.DB_PASS+'@ds163020.mlab.com:63020/nightlife');
+mongoose.connect('mongodb://'+process.env.DB_NAME+':'+process.env.DB_PASS+'@ds163020.mlab.com:63020/nightlife');
 
 
 // app.use(favicon(path.join(__dirname, 'dist/img', 'favicon.ico')));
@@ -80,7 +80,7 @@ const clientId = process.env.YELP_CLIENT_ID;
 const clientSecret = process.env.YELP_CLIENT_SECRET;
 
 app.post('/:searchCity', function(req, res) {
-
+  console.log('in the post');
   const searchRequest = {
     term: 'bars',
     location: req.params.searchCity
@@ -90,8 +90,10 @@ app.post('/:searchCity', function(req, res) {
 
     client.search(searchRequest).then(response => {
       const results = response.jsonBody.businesses;
-
       Bar.find({}, function(err , bars) {
+        if(err) {
+          res.send('Problem with the database');
+        }
         const resultsFiltered = filterResult(results , bars);
         res.json(resultsFiltered);
       });

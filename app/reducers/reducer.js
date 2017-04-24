@@ -12,10 +12,21 @@ export var UserReducer = (state = {}, action) => {
     }
 }
 
+export var cityToSearchReducer = (state = '' , action) => {
+    switch (action.type) {
+        case 'CITY':
+     
+            return action.city;
+
+        default:
+            return state;
+    }
+}
+
 export var BarsReducer = (state = {}, action) => {
     switch (action.type) {
         case "UPDATE_BARS":
-            return action.Bars
+            return action.bars
             
         default:
             return state;

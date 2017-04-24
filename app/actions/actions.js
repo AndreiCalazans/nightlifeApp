@@ -11,3 +11,17 @@ export var isLogged = (isLogged) => {
         isLogged
     }
 }
+
+export var cityToSearch = (city) => {
+    return {
+        type: 'CITY',
+        city
+    }
+}
+
+export var updateBars = (bars) => {
+    return {
+        type: 'UPDATE_BARS',
+        bars
+    }
+}
