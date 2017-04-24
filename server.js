@@ -35,40 +35,30 @@ app.post('/isGoing', function(req, res) {
   // userId and barName
   let user = req.body.userId;
   let barName = req.body.barName;
-  let isGoingUser = {[user]: true}
-    // Bar.findOneAndUpdate({name: barName }, {$set:{ [user]: true} }, {upsert: true}, function(err, doc) {
-    //   if (err) throw err;
-    //   res.send('ok updated');
-    // })
-
-  Bar.findOne({name: barName}, function(err, bar) {
-    if(bar == undefined) {
-      //create new info
-      Bar({name: barName, isGoing: [{"user": [user], "isGoing": true}] }).save(function(err) {
+  
+  Bar.findOne({"name": barName}, function(err, bar) {
+    //if no bar then create bar info
+    if(bar == null) {
+      Bar({"name":barName , "isGoing": [user]}).save(function(err){
         if(err) throw err;
         res.send(bar);
       });
     } else {
-      let noUser = true;
-      bar.isGoing.forEach(function(each) {
-        if(each.user === user) {
-          each.isGoing = !each.isGoing;
-          noUser = false;
-        }
-      })
-      if(noUser) {
-        bar.isGoing.push(
-          {
-            "user": user,
-            "isGoing": true
-          }
-        )
+     
+      // check to see if userId already exists, if it does then delete else push
+      if(bar.isGoing.indexOf(user) === -1) {
+        bar.isGoing.push(user);
+
+      } else {
+        bar.isGoing.splice(bar.isGoing.indexOf(user) , 1);
+      
       }
-      console.log(bar);
-      bar.save(function(err , bar) {
-        if (err) throw err;
+
+      bar.save(function(err) {
+        if(err) throw err;
         res.send(bar);
       })
+
 
     }
   })
@@ -80,7 +70,7 @@ const clientId = process.env.YELP_CLIENT_ID;
 const clientSecret = process.env.YELP_CLIENT_SECRET;
 
 app.post('/:searchCity', function(req, res) {
-  console.log('in the post');
+  
   const searchRequest = {
     term: 'bars',
     location: req.params.searchCity

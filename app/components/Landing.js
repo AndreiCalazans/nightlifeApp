@@ -36,6 +36,11 @@ class Landing extends React.Component {
     })
   }
 
+  componentWillMount() {
+    if(localStorage.getItem('cityToSearch')) {
+      browserHistory.push('/bars');
+    }
+  }
  
   render () {
     

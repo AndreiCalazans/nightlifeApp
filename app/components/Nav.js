@@ -6,6 +6,7 @@ function Nav(props) {
         <div className='nav'>
             <div className="logo">
                 <Link to='/'>Logo</Link>
+                <Link to='/' onClick={() => {localStorage.removeItem('cityToSearch')}}>Search Again</Link>
             </div>
             <LogginControl></LogginControl>
         </div>

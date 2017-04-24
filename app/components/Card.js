@@ -1,7 +1,7 @@
 import React from 'react';
-
 function Card(props) {
-    const {isGoing , title , imgUrl, address , number, rating} = props;
+  
+    const {isGoing , title , imgUrl, address , number, rating, onToGoClick} = props;
     return (
         <div className="Card">
             <div className="img">
@@ -13,7 +13,7 @@ function Card(props) {
                 <p>{address.join(' ')}</p>
                 <p>{number}</p>
                 <div>
-                    <p>{isGoing.length} going  
+                    <p onClick={() => {onToGoClick(title)}}>Click to go: {isGoing.length} going  
                         <PlusOrMinus isGoing={false}></PlusOrMinus>
                     </p>
                     

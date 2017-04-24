@@ -19,6 +19,20 @@
       .cardContainer .Card p:last-child:hover {
         cursor: pointer; }
 
+.warningContainer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000; }
+
+.warning {
+  width: 250px;
+  background: white;
+  height: 200px;
+  font-weight: bold;
+  box-shadow: 0 5px 21px 8px rgba(0, 0, 0, 0.5); }
+
 .nav {
   position: relative;
   height: 45px;
@@ -33,6 +47,8 @@
     padding: 10px; }
   .nav .logo {
     font-size: 1.5em; }
+    .nav .logo a {
+      margin: 5px; }
 
 *, *:before, *:after {
   margin: 0; }
@@ -40,3 +56,8 @@
 html {
   font-size: 14px;
   line-height: 1.5; }
+
+.flex-center-box, .warningContainer, .warning {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
