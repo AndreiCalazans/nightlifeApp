@@ -45,7 +45,7 @@ module.exports = {
   },
   plugins: [
     extractPlugin
-//
+
 //     new webpack.DefinePlugin({
 //   'process.env': {
 //     NODE_ENV: JSON.stringify('production')
@@ -63,6 +63,6 @@ module.exports = {
     AUTH_CLIENT_ID: process.env.AUTH_CLIENT_ID,
     AUTH_CLIENT_SECRET: '123'
   })
-},
-devtool: 'cheap-module-eval-source-map'
+}
+// devtool: 'cheap-module-eval-source-map'
 }
