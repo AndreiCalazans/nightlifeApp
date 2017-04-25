@@ -1,5 +1,6 @@
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CompressionPlugin = require('compression-webpack-plugin');
 var webpack = require('webpack');
 var extractPlugin = new ExtractTextPlugin({
   filename: 'main.css'
@@ -44,18 +45,22 @@ module.exports = {
     ]
   },
   plugins: [
-    extractPlugin
+    extractPlugin,
+     new webpack.DefinePlugin({ // <-- key to reducing React's size
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin(), //minify everything
+    new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks 
+     new CompressionPlugin({ 
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
 
-//     new webpack.DefinePlugin({
-//   'process.env': {
-//     NODE_ENV: JSON.stringify('production')
-//   }
-// }),
-//     new webpack.optimize.UglifyJsPlugin({
-//     compress: {
-//         warnings: false
-//     }
-// })
   ],
   externals: {
   'Config': JSON.stringify({
