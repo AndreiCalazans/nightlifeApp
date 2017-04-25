@@ -4,8 +4,7 @@ import Auth0Lock from 'auth0-lock';
 const ID_TOKEN_KEY = 'id_token';
 const AUTH_CLIENT_ID= 'XEjixkU7EStQeNAd9jL4wwho4nfu42kf';
 const AUTH_DOMAIN = 'andreicalazans.auth0.com';
-
-
+import {store} from '../index';
 const lock = new Auth0Lock( AUTH_CLIENT_ID , AUTH_DOMAIN , {
     auth: {
       redirectUrl: `${window.location.origin}`,
@@ -21,9 +20,13 @@ lock.on('authenticated', authResult => {
     if(error) {
       console.log('Error loading the Profile', error)
     }
-      console.log(profile);
+      store.dispatch({
+         type: "USER_LOGGED",
+        Profile: profile
+      })
+      console.log('authenticated');
       setProfile(profile);
-       browserHistory.push('/');
+      browserHistory.push('/');
   })
 
 });

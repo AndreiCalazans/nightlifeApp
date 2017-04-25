@@ -29,6 +29,14 @@
 }
 
 //warning
+#logo {
+    display:flex;
+    
+    img {
+        width: 40px;
+        height: 40px;
+    }
+}
 .warningContainer {
     position: fixed;
     width: 100%;
@@ -41,7 +49,23 @@
     width: 250px;
     background: white;
     height: 200px;
+    flex-direction: column;
     font-weight: bold;
     box-shadow: 0 5px 21px 8px rgba(0, 0, 0, 0.5);
      @extend .flex-center-box
+}
+
+.card-animation {
+    opacity:1;
+    animation: slowAppear 1000ms;
+    animation-iteration-count: 1;
+}
+@keyframes slowAppear {
+    0% {
+        
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }

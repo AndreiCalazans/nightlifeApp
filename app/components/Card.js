@@ -3,7 +3,7 @@ function Card(props) {
   
     const {isGoing , title , imgUrl, address , number, rating, onToGoClick} = props;
     return (
-        <div className="Card">
+        <div className="Card card-animation">
             <div className="img">
                 <img src={imgUrl == ''? "http://rwamittu.com/wp-content/themes/white/assets/images/placeholder.jpg" : imgUrl} alt=""/>
             </div>

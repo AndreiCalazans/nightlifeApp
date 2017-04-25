@@ -1,0 +1,107 @@
+#landing {
+    div > button {
+        position: fixed;
+        right: 20px;
+        top:25px;
+        z-index:200;
+    }
+    .lead {
+        color: white;
+        z-index: 10;
+        position: relative;
+        padding: 50px 30px;
+        height: 180px;
+        #logo {
+            justify-content: flex-start;
+            align-items: center;
+            h1 {
+                margin-left: 15px;
+            }
+        }
+       
+            background: linear-gradient(235deg, #479043, #66c861);
+            background-size: 400% 400%;
+
+            -webkit-animation: AnimationName 30s ease infinite;
+            -moz-animation: AnimationName 30s ease infinite;
+            animation: AnimationName 30s ease infinite;
+        h1 {
+            font-size: 50px;
+        }    
+        p ,form {
+            padding: 20px;
+
+        }
+        div {
+            display: flex;
+            justify-content: flex-end;
+            
+        }
+        p, form {
+            text-align: right;
+        }
+
+    }
+    .bodyInfo {
+        
+        display: flex;
+        flex-wrap: wrap;
+        min-height: 300px;
+        
+        .fa {
+    font-size: 140px;
+}
+
+        div {
+            box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.5);
+            padding:20px;
+            flex-grow:1;
+            margin: 10px;
+            width:200px;
+            height: 220px;
+            text-align:center;
+            > * {
+                margin: 15px;
+            }
+        }
+    }
+    .footer {
+        @extend .flex-center-box;
+    }
+}
+
+
+
+
+.lightgreen {
+    color: lightgreen;
+}
+.lightblue {
+    color: lightblue;
+}
+.lightpurple {
+     color: rebeccapurple;
+}
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+@media (min-width: 1100px) {
+    #landing .lead {
+        padding: 100px;
+    } 
+}

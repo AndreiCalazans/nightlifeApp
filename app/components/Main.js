@@ -5,27 +5,24 @@ import * as actions from '../actions/actions';
 
 class Main extends React.Component {
 
-    componentDidMount() {
-        const {dispatch} = this.props;        
-        
-    }
+   handleUser() {
+       console.log('handle');
+   }
 
     componentWillMount() {
 
         const {dispatch} = this.props;
-        
+        console.log('will mountin main');
         // controls to handle user logged
         dispatch(actions.isLogged(isLoggedIn())); 
          if(isLoggedIn()){
+             console.log('will mount is logged');
             dispatch(actions.loggedUser(getProfile()));
         }else {
             // when logged off user should an empty object
-
+             console.log('will mount is NOT logged');
             dispatch(actions.loggedUser({}));
         }
-        //////////////////////////////////    
-
-        //check to see if exist cityToSearch in the localstorage if yes push the search
 
     }
 
@@ -40,3 +37,5 @@ class Main extends React.Component {
 };
 
 export default connect()(Main);
+
+

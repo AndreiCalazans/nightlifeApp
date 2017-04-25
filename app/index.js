@@ -8,7 +8,8 @@ import Main from './components/Main';
 import Bars from './components/Bars';
 
 
-var store = require('./store/configStore').configure();
+export var store = require('./store/configStore').configure();
+
 
 ReactDOM.render(
   <Provider store={store}>

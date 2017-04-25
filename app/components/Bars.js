@@ -75,11 +75,17 @@ class Bars extends React.Component {
     render () {
         var {bars} = this.props;
         return (
-            <div>
+            <div className='bar'>
                 <Warning toggleShow={this.toggleShow} show={this.state.showWarning} msg='Please Sign in or Log In'></Warning>
                 <Nav></Nav>
                 {this.state.isLoading ? 
-                    <h1>Loading...</h1>
+                    <div className="loading">
+                        <div className="spinner">
+                            <div className="bounce1"></div>
+                            <div className="bounce2"></div>
+                            <div className="bounce3"></div>
+                        </div>
+                    </div>
                     :
                 <div className="cardContainer">
                     {bars.map((each , index) => {
